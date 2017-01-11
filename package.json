@@ -1,0 +1,27 @@
+{
+  "name": "manuel",
+  "version": "1.0.0",
+  "description": "Evaluacion Node UTN",
+  "main": "server.js",
+  "dependencies": {
+    "nodemailer": "^2.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuelchantada/NodeEval01.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "manuelChantada",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manuelchantada/NodeEval01/issues"
+  },
+  "homepage": "https://github.com/manuelchantada/NodeEval01#readme"
+}
