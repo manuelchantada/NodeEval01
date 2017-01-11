@@ -94,7 +94,7 @@ var smtpTransport = nodemailer.createTransport('smtps://'+serverMail+'%40gmail.c
 	var response;
 	smtpTransport.sendMail({
    from: nombre+ "<"+remitente+">", 
-   to: serverMail+"@gmail", 
+   to: serverMail+"@gmail.com", 
    subject: asunto, // Subject line
    text: contenido,
 }, function(error, response){
