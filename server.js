@@ -25,7 +25,7 @@ var servidor=http.createServer(function(pedido,respuesta){
 	encaminar(pedido,respuesta,camino);
 });
 
-servidor.listen(8888);
+servidor.listen(process.env.PORT || 8888);
 
 console.log("Servidor iniciado");
 
@@ -100,10 +100,10 @@ var smtpTransport = nodemailer.createTransport('smtps://'+serverMail+'%40gmail.c
 }, function(error, response){
    if(error){
        console.log(error);
+       return error;
    }else{
        console.log("Mensaje enviado: " + response.message);
    }
 });
 
-return response;
 }
