@@ -16,7 +16,6 @@ var mime = {
 var serverMail = "manulito85";
 var serverMailpass = "1pipienpinamar";
 
-
 var servidor=http.createServer(function(pedido,respuesta){
     var objetourl = url.parse(pedido.url);
 	var camino='public'+objetourl.pathname;
@@ -29,8 +28,7 @@ servidor.listen(process.env.PORT || 8888);
 
 console.log("Servidor iniciado");
 
-function encaminar(pedido,respuesta,camino) {
-	
+function encaminar(pedido,respuesta,camino) {	
 	switch (camino) {
 		case 'public/enviar': {
 			enviar(pedido, respuesta)
@@ -63,7 +61,6 @@ function encaminar(pedido,respuesta,camino) {
 	}	
 }
 
-
 function enviar(pedido,respuesta) {
     var info = '';
     pedido.on('data', function(datosparciales){ 
@@ -76,8 +73,8 @@ function enviar(pedido,respuesta) {
       var remitente = formulario['remitente'];
       var asunto = formulario['asunto'];
       var contenido = formulario['contenido'];
-     	// TODO validar(formulario);
       enviarMail(nombre,remitente,asunto,contenido);
+
 		var pagina='<!doctype html><html><head></head><body>'+
 	           'Mensaje enviado.'+
 			     '<a href="index.html">Volver</a>'+
@@ -89,21 +86,20 @@ function enviar(pedido,respuesta) {
 
 
 function enviarMail(nombre, remitente, asunto, contenido) {
-
-var smtpTransport = nodemailer.createTransport('smtps://'+serverMail+'%40gmail.com:'+serverMailpass+'@smtp.gmail.com');
+	var smtpTransport = nodemailer.createTransport('smtps://'+serverMail+'%40gmail.com:'+serverMailpass+'@smtp.gmail.com');
 	var response;
+
 	smtpTransport.sendMail({
    from: nombre+ "<"+remitente+">", 
    to: serverMail+"@gmail.com", 
    subject: asunto, // Subject line
    text: contenido,
-}, function(error, response){
-   if(error){
-       console.log(error);
-       return error;
-   }else{
-       console.log("Mensaje enviado: " + response.message);
-   }
-});
-
+	}, 
+	function(error, response){
+	   if(error){
+	       console.log(error);
+	   }else{
+	       console.log("Mensaje enviado: " + response.message);
+	   }
+	});
 }
